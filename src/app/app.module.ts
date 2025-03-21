@@ -15,7 +15,7 @@ import { HeaderComponent } from './header/header.component';
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserModule, FormsModule,NgxChartsModule,
-    BrowserAnimationsModule,  PieChartComponent, LineChartComponent,  HeaderComponent ],
+    BrowserAnimationsModule,  PieChartComponent, LineChartComponent, HeaderComponent ],
   providers: [],
   bootstrap: [AppComponent],
 })

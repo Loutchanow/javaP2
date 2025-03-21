@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  providers: [OlympicService],
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public olympics$: Observable<any> = of(null);
+  public olympics: any = null; 
 
   constructor(private olympicService: OlympicService) {}
 
   ngOnInit(): void {
-    this.olympics$ = this.olympicService.getOlympics();
+    this.olympicService.getOlympics().subscribe({
+      next: (data) => {
+        console.log('Données des JO:', data); 
+        this.olympics = data;
+      },
+      error: (err) => console.error('Erreur lors du chargement des JO:', err),
+    });
   }
 }
