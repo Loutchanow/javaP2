@@ -1,14 +1,11 @@
 <ngx-charts-pie-chart
+  [results]="single"
   [view]="view"
   [scheme]="colorScheme"
-  [results]="single"
   [gradient]="gradient"
   [legend]="showLegend"
-  [legendPosition]="legendPosition"
   [labels]="showLabels"
   [doughnut]="isDoughnut"
-  (select)="onSelect($event)"
-  (activate)="onActivate($event)"
-  (deactivate)="onDeactivate($event)"
->
+  [legendPosition]="legendPosition"
+  [tooltipText]="tooltipText">
 </ngx-charts-pie-chart>

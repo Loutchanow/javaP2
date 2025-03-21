@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxChartsModule, Color,  LegendPosition } from '@swimlane/ngx-charts';
+import { NgxChartsModule, Color, LegendPosition } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-pie-chart',
@@ -10,24 +10,24 @@ import { NgxChartsModule, Color,  LegendPosition } from '@swimlane/ngx-charts';
   styleUrls: ['./pie-chart.component.scss']
 })
 export class PieChartComponent {
-  // Données codées en dur
-  single = [
-    { name: "Germany", value: 40632 },
-    { name: "USA", value: 50000 },
-    { name: "France", value: 36745 },
-    { name: "UK", value: 36240 }
-  ];
-  
-  view: [number, number] = [700, 400]; 
+  @Input() single: any[] = []; 
+  view: [number, number] = [700, 400];
 
-  // options
   gradient: boolean = true;
-  showLegend: boolean = true;
+  showLegend: boolean = false;
   showLabels: boolean = true;
   isDoughnut: boolean = false;
-  legendPosition: LegendPosition = LegendPosition.Below; 
+  legendPosition: LegendPosition = LegendPosition.Below;
 
-  colorScheme: Color = { domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'] } as Color; // ✅ Corrigé
+  colorScheme: Color = { domain: ['#bbd4eb ', '#89a1da ', '#793d52 ', '#956066 ', '#9881a0 ', '#81a1d9'] } as Color;
+
+
+
+  tooltipText({ data }: { data: any }): string {
+    return `<div style="background-color: #00797c;">
+      ${data.name}</br>🏅 ${data.value}
+    </div>`;
+  }
 
   onSelect(data: any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));

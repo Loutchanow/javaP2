@@ -1,5 +1,5 @@
 <div class="container">
   <h1>Olympic games app</h1>
   <h2>Dashboard</h2>
-  <app-pie-chart></app-pie-chart>
+  <app-pie-chart *ngIf="pieChartData" [single]="pieChartData"></app-pie-chart>
 </div>

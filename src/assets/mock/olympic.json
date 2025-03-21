@@ -61,7 +61,7 @@
         "id": 1,
         "year": 2012,
         "city": "Londres",
-        "medalsCount": 109,
+        "medalsCount": 1,
         "athleteCount": 610
       },
       {
@@ -131,6 +131,33 @@
         "city": "Tokyo",
         "medalsCount": 33,
         "athleteCount": 403
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "country": "United Kingdom",
+    "participations": [
+      {
+        "id": 1,
+        "year": 2012,
+        "city": "Londres",
+        "medalsCount": 30,
+        "athleteCount": 400
+      },
+      {
+        "id": 2,
+        "year": 2016,
+        "city": "Rio de Janeiro",
+        "medalsCount": 40,
+        "athleteCount": 410
+      },
+      {
+        "id": 3,
+        "year": 2020,
+        "city": "Tokyo",
+        "medalsCount": 33,
+        "athleteCount": 400
       }
     ]
   }
