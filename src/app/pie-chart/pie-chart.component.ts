@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxChartsModule, Color, colorSets, LegendPosition } from '@swimlane/ngx-charts';
+import { NgxChartsModule, Color,  LegendPosition } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-pie-chart',
@@ -18,14 +18,14 @@ export class PieChartComponent {
     { name: "UK", value: 36240 }
   ];
   
-  view: [number, number] = [700, 400]; // ✅ Corrigé
+  view: [number, number] = [700, 400]; 
 
   // options
   gradient: boolean = true;
   showLegend: boolean = true;
   showLabels: boolean = true;
   isDoughnut: boolean = false;
-  legendPosition: LegendPosition = LegendPosition.Below; // ✅ Corrigé
+  legendPosition: LegendPosition = LegendPosition.Below; 
 
   colorScheme: Color = { domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'] } as Color; // ✅ Corrigé
 

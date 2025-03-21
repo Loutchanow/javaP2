@@ -9,13 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserModule, 
     FormsModule,
     NgxChartsModule,
-    BrowserAnimationsModule,  PieChartComponent ],
+    BrowserAnimationsModule,  PieChartComponent, LineChartComponent ],
   providers: [],
   bootstrap: [AppComponent],
 })
