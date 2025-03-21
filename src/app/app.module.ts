@@ -8,15 +8,14 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { PieChartComponent } from './pie-chart/pie-chart.component';
-import { LineChartComponent } from './line-chart/line-chart.component';
+import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
+import { LineChartComponent } from './charts/line-chart/line-chart.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserModule, 
-    FormsModule,
-    NgxChartsModule,
-    BrowserAnimationsModule,  PieChartComponent, LineChartComponent ],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserModule, FormsModule,NgxChartsModule,
+    BrowserAnimationsModule,  PieChartComponent, LineChartComponent,  HeaderComponent ],
   providers: [],
   bootstrap: [AppComponent],
 })

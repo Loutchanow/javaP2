@@ -5,6 +5,7 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  providers: [OlympicService],
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
