@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxChartsModule, Color, LegendPosition } from '@swimlane/ngx-charts';
+import { getResponsiveView } from 'src/app/utilis/utils';
 
 @Component({
   selector: 'app-pie-chart',
@@ -21,11 +22,18 @@ export class PieChartComponent {
 
   colorScheme: Color = { domain: ['#bbd4eb ', '#89a1da ', '#793d52 ', '#956066 ', '#9881a0 ', '#81a1d9'] } as Color;
 
-
+  constructor() {
+    this.view = getResponsiveView();
+  }
+  
+  @HostListener('window:resize')
+  onResize() {
+    this.view = getResponsiveView();
+  }
 
   tooltipText({ data }: { data: any }): string {
-    return `<div style="background-color: #00797c;">
-      ${data.name}</br>🏅 ${data.value}
+    return `<div class="custom-tooltip" style="background-color: #00797c;">
+      ${data.name} <br>  🏅 ${data.value}
     </div>`;
   }
 

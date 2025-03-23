@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { NgxChartsModule, Color,  LegendPosition } from '@swimlane/ngx-charts';
+import { getResponsiveView } from 'src/app/utilis/utils';
 
 
 @Component({
@@ -81,10 +82,9 @@ export class LineChartComponent {
   
 
   // multi: any[];
-  view: [number, number] = [700, 300];
+  view: [number, number] = [700, 400];
 
-  // options
-  legend: boolean = true;
+  legend: boolean = false;
   showLabels: boolean = true;
   animations: boolean = true;
   xAxis: boolean = true;
@@ -94,11 +94,18 @@ export class LineChartComponent {
   xAxisLabel: string = 'Year';
   yAxisLabel: string = 'Population';
   timeline: boolean = true;
-  colorScheme: Color = { domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'] } as Color; // ✅ Corrigé
+  colorScheme: Color = { domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'] } as Color; 
 
 
   constructor() {
+    this.view = getResponsiveView();
   }
+  
+  @HostListener('window:resize')
+  onResize() {
+    this.view = getResponsiveView();
+  }
+
 
   onSelect(data: any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));

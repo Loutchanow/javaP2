@@ -1,5 +1,9 @@
 <div class="container">
-  <h1>Olympic games app</h1>
-  <h2>Dashboard</h2>
+  <h1>Medals per Country</h1>
+  <div class="flex">
+    <app-legend text="Number of JOs" [data]="numberOfParticipations"></app-legend>
+    <app-legend text="Number of countries" [data]="numberOfCountries"></app-legend>
+  </div>
+
   <app-pie-chart *ngIf="pieChartData" [single]="pieChartData"></app-pie-chart>
 </div>

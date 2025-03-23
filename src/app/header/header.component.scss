@@ -1,15 +1,12 @@
 nav{
-  background-color: rgb(187, 187, 187);
   padding: 30px;
   display: flex;
   justify-content: center;
   gap: 20px;
-  .active {
-    color: red;
-  }
+  border-bottom: 2px solid #00797c;
   a {
     font-size: 30px;
-    color: black;
+    color: #00797c;
     text-decoration: none;
   }
 }

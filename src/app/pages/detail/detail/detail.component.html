@@ -1,5 +1,9 @@
 <div class="container">
-  <h1>Olympic games app</h1>
-  <h2>Détail</h2>
+  <h1>Détail</h1>
+  <div class="flex">
+    <app-legend text="Number of entries" [data]= 50></app-legend>
+    <app-legend text="Total number of medals" [data]=20></app-legend>
+    <app-legend text="Total number of athletes" [data]=20></app-legend>
+  </div>
   <app-line-chart></app-line-chart>
 </div>
