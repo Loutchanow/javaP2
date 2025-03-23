@@ -10,8 +10,8 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'detail',
-    component: DetailComponent,
+    path: 'details/:name',
+     component: DetailComponent, 
   },
   {
     path: '**', 

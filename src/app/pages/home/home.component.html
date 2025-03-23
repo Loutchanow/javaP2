@@ -5,5 +5,5 @@
     <app-legend text="Number of countries" [data]="numberOfCountries"></app-legend>
   </div>
 
-  <app-pie-chart *ngIf="pieChartData" [single]="pieChartData"></app-pie-chart>
+  <app-pie-chart *ngIf="pieChartData" (itemClicked)="onItemClicked($event)" [single]="pieChartData"></app-pie-chart>
 </div>

@@ -10,5 +10,6 @@ import { LegendComponent } from 'src/app/legend/legend.component';
   styleUrl: './detail.component.scss'
 })
 export class DetailComponent {
+title: string = "Détails";
 
 }

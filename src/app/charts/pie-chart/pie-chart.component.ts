@@ -1,7 +1,8 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxChartsModule, Color, LegendPosition } from '@swimlane/ngx-charts';
 import { getResponsiveView } from 'src/app/utilis/utils';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pie-chart',
@@ -12,18 +13,21 @@ import { getResponsiveView } from 'src/app/utilis/utils';
 })
 export class PieChartComponent {
   @Input() single: any[] = []; 
+  @Output() itemClicked = new EventEmitter<string>();
   view: [number, number] = [700, 400];
 
   gradient: boolean = true;
   showLegend: boolean = false;
   showLabels: boolean = true;
+  selectedCountry: string = "";
   isDoughnut: boolean = false;
   legendPosition: LegendPosition = LegendPosition.Below;
 
   colorScheme: Color = { domain: ['#bbd4eb ', '#89a1da ', '#793d52 ', '#956066 ', '#9881a0 ', '#81a1d9'] } as Color;
 
-  constructor() {
-    this.view = getResponsiveView();
+  constructor(private router: Router, private route: ActivatedRoute)
+   {
+    this.view = getResponsiveView()
   }
   
   @HostListener('window:resize')
@@ -38,9 +42,14 @@ export class PieChartComponent {
   }
 
   onSelect(data: any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
+    console.log(data.name);
+    this.itemClicked.emit(data.name);
+    this.selectedCountry = data.name;
+    this.router.navigate(['/details', data.name]); 
 
+
+  }
+  
   onActivate(data: any): void {
     console.log('Activate', JSON.parse(JSON.stringify(data)));
   }

@@ -9,8 +9,13 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
 export class HomeComponent implements OnInit {
   public olympics: any = null;
   public pieChartData: any = null;
+  public lineChartData: any = null;
   public numberOfParticipations: number = 0;
   public numberOfCountries: number = 0;
+  selectedItem: string = "";
+  selectedData: any[] = [];
+
+
 
   constructor(private olympicService: OlympicService) {}
 
@@ -23,7 +28,6 @@ export class HomeComponent implements OnInit {
         console.log(this.pieChartData);
         this.getNumberOfParticipations(data);
         this.getNumberOfCountries(data);
-        
       },
       error: (err) => console.error('Erreur lors du chargement des JO:', err),
     });
@@ -45,5 +49,23 @@ export class HomeComponent implements OnInit {
       name: olympic.country,
       value: this.cumulateMedalsCount(olympic.participations),
     }));
+  }
+
+  sortLineChartData(data: any[], itemName: string): any[] {
+    return data
+      .filter(country => country.country === itemName)
+      .map(country => ({
+        name: country.country,
+        series: country.participations.map((participation: any) => ({
+          name: participation.year,
+          value: participation.medalsCount
+        }))
+      }));
+  }
+  onItemClicked(itemName: string): void {
+    this.selectedItem = itemName;
+    this.selectedData = this.sortLineChartData(this.olympics, itemName);
+    console.log(this.selectedData);
+ 
   }
 }
