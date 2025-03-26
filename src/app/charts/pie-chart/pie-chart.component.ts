@@ -2,7 +2,6 @@ import { Component, EventEmitter, HostListener, Input, Output } from '@angular/c
 import { CommonModule } from '@angular/common';
 import { NgxChartsModule, Color, LegendPosition } from '@swimlane/ngx-charts';
 import { getResponsiveView } from 'src/app/utilis/utils';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pie-chart',
@@ -25,7 +24,7 @@ export class PieChartComponent {
 
   colorScheme: Color = { domain: ['#bbd4eb ', '#89a1da ', '#793d52 ', '#956066 ', '#9881a0 ', '#81a1d9'] } as Color;
 
-  constructor(private router: Router, private route: ActivatedRoute)
+  constructor()
    {
     this.view = getResponsiveView()
   }
@@ -45,9 +44,6 @@ export class PieChartComponent {
     console.log(data.name);
     this.itemClicked.emit(data.name);
     this.selectedCountry = data.name;
-    this.router.navigate(['/details', data.name]); 
-
-
   }
   
   onActivate(data: any): void {

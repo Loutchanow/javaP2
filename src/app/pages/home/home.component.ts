@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
@@ -12,12 +13,13 @@ export class HomeComponent implements OnInit {
   public lineChartData: any = null;
   public numberOfParticipations: number = 0;
   public numberOfCountries: number = 0;
-  selectedItem: string = "";
+  itemClicked: string = "";
   selectedData: any[] = [];
 
 
 
-  constructor(private olympicService: OlympicService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private olympicService: OlympicService) {}
+  // constructor(private olympicService: OlympicService) {}
 
   ngOnInit(): void {
     this.olympicService.getOlympics().subscribe({
@@ -57,15 +59,15 @@ export class HomeComponent implements OnInit {
       .map(country => ({
         name: country.country,
         series: country.participations.map((participation: any) => ({
-          name: participation.year,
+          name: participation.year.toString(),
           value: participation.medalsCount
         }))
       }));
   }
   onItemClicked(itemName: string): void {
-    this.selectedItem = itemName;
+    this.itemClicked = itemName;
     this.selectedData = this.sortLineChartData(this.olympics, itemName);
     console.log(this.selectedData);
- 
+    this.router.navigate(['/details', itemName], { state: { data: this.selectedData } });
   }
 }
