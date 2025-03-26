@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { ActivatedRoute } from '@angular/router';
 import { LineChartComponent } from 'src/app/charts/line-chart/line-chart.component';
 import { LegendComponent } from 'src/app/legend/legend.component';
 
@@ -14,14 +13,23 @@ import { LegendComponent } from 'src/app/legend/legend.component';
 export class DetailComponent implements OnInit {
   title: string = "Détails";
   selectedCountry: string = '';
+  numberOfParticipations: number = 0;
+  numberOfMedals: number = 0;
+  numberOfAthletes: number = 0;
   selectedData: any[] = [];
 
   constructor() {}
   ngOnInit(): void {
-    if (history.state.data) {
-      this.selectedData = history.state.data;
+    if (history.state) {
+      this.selectedCountry = history.state.lineChartData[0].name
+      this.title = this.selectedCountry;
+      this.selectedData = history.state.lineChartData;
       console.log(this.selectedData);
-      
+      this.numberOfParticipations = history.state.legendData.numberOfParticipations;
+      this.numberOfMedals = history.state.legendData.numberOfMedals;
+      this.numberOfAthletes = history.state.legendData.numberOfAthletes;
+
+
     } else {
       console.log("Aucune donnée trouvée");
     }

@@ -1,3 +1,4 @@
 <nav>
-  <a routerLink= ""> Dashboard</a>
+  <a routerLink="/" *ngIf="!isDetailPage">Dashboard</a>
+  <a routerLink="/" *ngIf="isDetailPage">Back to Dashboard</a>
 </nav>
