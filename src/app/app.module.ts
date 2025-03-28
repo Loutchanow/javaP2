@@ -8,10 +8,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { PieChartComponent } from './components/charts/pie-chart/pie-chart.component';
-import { LineChartComponent } from './components/charts/line-chart/line-chart.component';
-import { HeaderComponent } from './components/header/header.component';
-import { LegendComponent } from './components/legend/legend.component';
+import { PieChartComponent } from './common/charts/pie-chart/pie-chart.component';
+import { LineChartComponent } from './common/charts/line-chart/line-chart.component';
+import { HeaderComponent } from './header/header.component';
+import { LegendComponent } from './common/legend/legend.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],

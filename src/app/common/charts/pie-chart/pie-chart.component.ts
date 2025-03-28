@@ -35,7 +35,7 @@ export class PieChartComponent {
   }
 
   tooltipText({ data }: { data: any }): string {
-    return `<div class="custom-tooltip" style="background-color: #00797c;">
+    return `<div class="custom-tooltip">
       ${data.name} <br>  🏅 ${data.value}
     </div>`;
   }

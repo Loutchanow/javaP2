@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LineChartComponent } from 'src/app/components/charts/line-chart/line-chart.component';
-import { LegendComponent } from 'src/app/components/legend/legend.component';
+import { LineChartComponent } from 'src/app/common/charts/line-chart/line-chart.component';
+import { LegendComponent } from 'src/app/common/legend/legend.component';
 
 @Component({
   selector: 'app-detail',
