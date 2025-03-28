@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OlympicService {
-  private jsonUrl = 'assets/mock/olympic.json'; 
+  private olympicsCache: any = null;
 
   constructor(private http: HttpClient) {}
 
   getOlympics(): Observable<any> {
-    return this.http.get<any>(this.jsonUrl);
+    if (this.olympicsCache) {
+      return of(this.olympicsCache); 
+    } else {
+      return this.http.get<any>('assets/mock/olympic.json').pipe(
+        tap((data) => (this.olympicsCache = data)) 
+      );
+    }
   }
 }

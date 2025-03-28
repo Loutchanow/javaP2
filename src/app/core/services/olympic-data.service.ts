@@ -51,6 +51,8 @@ export class OlympicDataService {
         }))
       }));
   }
+  
+//Récupère les données pour un pays séléctionné.
   getSelectedCountryData(data: any[], selectedCountry: string): any[]{
     return data.filter((country: any) => country.country === selectedCountry)
   }

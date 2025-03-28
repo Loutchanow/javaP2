@@ -26,18 +26,19 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private olympicService: OlympicService, private olympicDataService: OlympicDataService ) {}
 
   ngOnInit(): void {
-    this.olympicService.getOlympics().subscribe({
-      next: (data) => {
-        console.log(data);
-        this.olympics = data;
-        this.numberOfParticipations= this.olympicDataService.getNumberOfParticipations(data[0])
-        this.pieChartData = this.olympicDataService.sortPieChartData(data); 
-        this.numberOfCountries = this.olympicDataService.getNumberOfCountries(data); 
-        console.log(this.pieChartData);
-      },
-      error: (err) => console.error('Erreur lors du chargement des JO:', err),
-    });
-    
+    if (!this.olympics) {  
+      this.olympicService.getOlympics().subscribe({
+        next: (data) => {
+          console.log(data);
+          this.olympics = data;
+          this.numberOfParticipations = this.olympicDataService.getNumberOfParticipations(data[0]);
+          this.pieChartData = this.olympicDataService.sortPieChartData(data);
+          this.numberOfCountries = this.olympicDataService.getNumberOfCountries(data);
+          console.log(this.pieChartData);
+        },
+        error: (err) => console.error('Erreur lors du chargement des JO:', err),
+      });
+    }
   }
 
 
