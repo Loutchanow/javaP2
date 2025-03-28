@@ -2,6 +2,7 @@ import { Component, EventEmitter, HostListener, Input, Output } from '@angular/c
 import { CommonModule } from '@angular/common';
 import { NgxChartsModule, Color, LegendPosition } from '@swimlane/ngx-charts';
 import { getResponsiveView } from 'src/app/utilis/utils';
+import { PieChartData } from 'src/app/core/models/Olympic';
 
 @Component({
   selector: 'app-pie-chart',
@@ -11,7 +12,7 @@ import { getResponsiveView } from 'src/app/utilis/utils';
   styleUrls: ['./pie-chart.component.scss']
 })
 export class PieChartComponent {
-  @Input() single: any[] = []; 
+  @Input() single: PieChartData[] = []; 
   @Output() itemClicked = new EventEmitter<string>();
   view: [number, number] = [700, 400];
 
@@ -34,23 +35,15 @@ export class PieChartComponent {
     this.view = getResponsiveView();
   }
 
-  tooltipText({ data }: { data: any }): string {
+  tooltipText({ data }: { data: PieChartData }): string {
     return `<div class="custom-tooltip">
       ${data.name} <br>  🏅 ${data.value}
     </div>`;
   }
 
-  onSelect(data: any): void {
+  onSelect(data: PieChartData): void {
     console.log(data.name);
     this.itemClicked.emit(data.name);
     this.selectedCountry = data.name;
-  }
-  
-  onActivate(data: any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data: any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 }

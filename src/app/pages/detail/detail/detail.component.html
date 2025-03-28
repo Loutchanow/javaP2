@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="!noData" class="container">
   <h1>{{title}}</h1>
   <div class="flex">
     <app-legend text="Number of entries" [data]="numberOfParticipations"></app-legend>
@@ -6,5 +6,8 @@
     <app-legend text="Total number of athletes" [data]="numberOfAthletes"></app-legend>
   </div>
   <app-line-chart [multi]="selectedData"></app-line-chart>
-
+</div>
+<div *ngIf="noData" class="noData">
+  <h2>No data available</h2>
+  <p>Sorry, we couldn't find any data.</p>
 </div>

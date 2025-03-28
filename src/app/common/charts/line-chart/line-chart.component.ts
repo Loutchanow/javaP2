@@ -1,5 +1,6 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { NgxChartsModule, Color } from '@swimlane/ngx-charts';
+import { LineChartData } from 'src/app/core/models/Olympic';
 import { getResponsiveView } from 'src/app/utilis/utils';
 
 
@@ -11,7 +12,7 @@ import { getResponsiveView } from 'src/app/utilis/utils';
   standalone: true,
 })
 export class LineChartComponent {
-  @Input() multi: any[] = []; 
+  @Input() multi: LineChartData[] = []; 
   
   view: [number, number] = [700, 400];
 
@@ -37,15 +38,4 @@ export class LineChartComponent {
   }
 
 
-  onSelect(data: any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
-
-  onActivate(data: any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data: any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
 }

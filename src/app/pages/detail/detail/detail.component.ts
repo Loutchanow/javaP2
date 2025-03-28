@@ -1,11 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LineChartComponent } from 'src/app/common/charts/line-chart/line-chart.component';
 import { LegendComponent } from 'src/app/common/legend/legend.component';
+import { HistoryState, LineChartData } from 'src/app/core/models/Olympic';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [LineChartComponent, LegendComponent],
+  imports: [LineChartComponent, LegendComponent, CommonModule],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss'
 })
@@ -16,22 +18,23 @@ export class DetailComponent implements OnInit {
   numberOfParticipations: number = 0;
   numberOfMedals: number = 0;
   numberOfAthletes: number = 0;
-  selectedData: any[] = [];
+  selectedData: LineChartData[] = [];
+  public noData: boolean = false;
 
   constructor() {}
   ngOnInit(): void {
-    if (history.state) {
-      this.selectedCountry = history.state.lineChartData[0].name
+    const state = history.state as HistoryState;
+
+    if (state.lineChartData && state.lineChartData.length > 0 && state.legendData) {
+      this.selectedCountry = state.lineChartData[0].name;
       this.title = this.selectedCountry;
-      this.selectedData = history.state.lineChartData;
-      console.log(this.selectedData);
-      this.numberOfParticipations = history.state.legendData.numberOfParticipations;
-      this.numberOfMedals = history.state.legendData.numberOfMedals;
-      this.numberOfAthletes = history.state.legendData.numberOfAthletes;
-
-
+      this.selectedData = state.lineChartData;
+      this.numberOfParticipations = state.legendData.numberOfParticipations;
+      this.numberOfMedals = state.legendData.numberOfMedals;
+      this.numberOfAthletes = state.legendData.numberOfAthletes;
     } else {
       console.log("Aucune donnée trouvée");
+      this.noData = true;
     }
   }
 }
