@@ -6,6 +6,7 @@
     <app-legend text="Total number of athletes" [data]="numberOfAthletes"></app-legend>
   </div>
   <app-line-chart [multi]="selectedData"></app-line-chart>
+  <button routerLink="/">Go back</button>
 </div>
 <div *ngIf="noData" class="noData">
   <h2>No data available</h2>

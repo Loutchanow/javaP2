@@ -1,6 +1,16 @@
 app-pie-chart {
   width: auto;
 }
+button{
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 50px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif !important;
+  border: none;
+  background-color:  #04838f;
+}
 .noData{
   h2, p{ 
     color: #04838f;

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { LineChartComponent } from 'src/app/common/charts/line-chart/line-chart.component';
 import { LegendComponent } from 'src/app/common/legend/legend.component';
 import { HistoryState, LineChartData } from 'src/app/core/models/Olympic';
@@ -7,7 +8,7 @@ import { HistoryState, LineChartData } from 'src/app/core/models/Olympic';
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [LineChartComponent, LegendComponent, CommonModule],
+  imports: [LineChartComponent, LegendComponent, CommonModule, RouterLink],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss'
 })
