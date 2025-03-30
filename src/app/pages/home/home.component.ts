@@ -54,8 +54,8 @@ export class HomeComponent implements OnInit {
           legendData: {
             numberOfParticipations: this.numberOfParticipations,
             numberOfMedals: this.selectedCountryNumberOfMedals,
-          },
             numberOfAthletes: this.selectedCountryNumberOfAthletes,
+          },
         },
       });
   }

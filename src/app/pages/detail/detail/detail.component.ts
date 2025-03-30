@@ -32,6 +32,8 @@ export class DetailComponent implements OnInit {
       this.numberOfParticipations = state.legendData.numberOfParticipations;
       this.numberOfMedals = state.legendData.numberOfMedals;
       this.numberOfAthletes = state.legendData.numberOfAthletes;
+      console.log(this.numberOfAthletes);
+      
     } else {
       console.log("Aucune donnée trouvée");
       this.noData = true;

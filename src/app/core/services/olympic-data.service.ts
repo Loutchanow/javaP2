@@ -37,17 +37,15 @@ export class OlympicDataService {
 
   // Génère les données pour le Line Chart d'un pays donné
   sortLineChartData(data: CountryData[], itemName: string): LineChartData[] {
-    return data
-      .filter((country) => country.country === itemName)
-      .map((country) => ({
-        name: country.country,
-        series: country.participations.map((participation) => ({
+    return this.getSelectedCountryData(data, itemName)
+      .map((item) => ({
+        name: item.country,
+        series: item.participations.map((participation) => ({
           name: participation.year.toString(),
           value: participation.medalsCount,
         })),
       }));
   }
-
   // Récupère les données pour un pays sélectionné
   getSelectedCountryData(data: CountryData[], selectedCountry: string): CountryData[] {
     return data.filter((country) => country.country === selectedCountry);
